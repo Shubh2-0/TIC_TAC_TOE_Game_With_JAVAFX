@@ -14,6 +14,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -37,7 +39,7 @@ public class App extends Application {
     private ArrayList<Button> btns = new ArrayList<>();
     
 //    ALL LOGIC VARIABLES
-    boolean gameOver = true;
+    boolean gameOver = false;
     int activePlayer  = 0;
     int gameState[] = {3,3,3,3,3,3,3,3,3};
     int winningPosition[][] = {
@@ -145,6 +147,14 @@ public class App extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				
+				for(int i=0;i<9;i++) {
+					gameState[i] = 3;
+//					btns.get(i).setText("");
+					btns.get(i).setGraphic(null);
+					gameOver = false;
+					resetButton.setDisable(true);
+					
+				}
 			
 				
 			}
@@ -175,11 +185,91 @@ public class App extends Application {
     			 		
     			 	}else {
     			 		
-//    			 		
+//    			 		GAME IS NOT OVER DO CHANCES
+    			 		
+    			 		if(gameState[idI]==3) {
+    			 			
+//    			 			PROCESS
+    			 		if(activePlayer==1) {
+    			 			
+//    			 			CHANCE OF 1
+//    			 			currentBtn.setText(activePlayer+"");
+    			 			currentBtn.setGraphic(new ImageView(new Image("file:src/main/resources/img/x.png")));
+    			 			gameState[idI] = activePlayer;
+    			 			checkForWinner();
+    			 			activePlayer = 0;
+    			 			
+    			 		}else {
+    			 			
+//    			 			CHANCE OF 0
+//    			 			currentBtn.setText(activePlayer+"");
+    			 			currentBtn.setGraphic(new ImageView(new Image("file:src/main/resources/img/zero.png")));
+    			 			gameState[idI] = activePlayer;
+    			 			checkForWinner();
+    			 			activePlayer = 1;
+    			 			
+    			 		}
+    			 			
+    			 			
+    			 		}else {
+    			 		
+    			 			Alert alert = new Alert(AlertType.ERROR);
+        			 		alert.setTitle("Error message");
+        			 		alert.setContentText("Placed is already accupied");
+        			 		alert.show();
+        			 		
+    			 			
+    			 			
+    			 		}
     			 		
     			 	}
     			 	
     			}
+
+    			
+//    			THIS METHOD CHECKS FOR WINNER
+				private void checkForWinner() {
+				
+				if(!gameOver) {	
+					
+
+					for(int[] wp : winningPosition) {
+						
+						if(gameState[wp[0]]==gameState[wp[1]] && gameState[wp[1]]==gameState[wp[2]] && gameState[wp[0]]!=3 ) {
+							
+							
+//							ACTIVE PLAYER HAS WINNER
+							
+						
+							Alert alert = new Alert(AlertType.ERROR);
+	    			 		alert.setTitle("Success message");
+	    			 		alert.setContentText(activePlayer+" has won the game");
+	    			 		alert.show();
+	    			 		gameOver=true;
+	    			 		resetButton.setDisable(false);
+	    			 		break;
+							
+							
+							
+							
+						}
+						
+						
+						
+						
+						
+					}
+					
+					
+
+ 
+					
+					
+					
+				}
+					
+					
+				}
     		});
     		
     	}
