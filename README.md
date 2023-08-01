@@ -16,7 +16,7 @@ Tic Tac Toe is a classic game where two players take turns marking X and O on a 
 - Real-time feedback on game status (win, draw, or ongoing) ✅🤝❌
 - Automatic restart after game over ♻️
 - Error handling for already selected cells ⚠️
- 
+  
 ## Installation
 
 1. Clone this repository: `git clone https://github.com/Shubh2-0/TIC_TAC_TOE_Game_With_JAVAFX.git`
