@@ -7,7 +7,7 @@
 
 ## Overview
 
-Tic Tac Toe is a classic game where two players take turns marking X and O on a 3x3 grid. The objective is to get three of their symbols in a horizontal, vertical, or diagonal row. This project showcases the implementation of the game using JavaFX, providing a user-friendly graphical interface.
+Tic Tac Toe is a classic game where two players take turns marking X and O on a 3x3 grid. The objective is to get three of their symbols in a horizontal, vertical, or diagonal row. This project showcases the implementation of the game using JavaFX, providing a user-friendly graphical interface. 
 
 ## Features
 
