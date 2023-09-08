@@ -20,8 +20,8 @@ Tic Tac Toe is a classic game where two players take turns marking X and O on a 
 ## Installation
 
 1. Clone this repository: `git clone https://github.com/Shubh2-0/TIC_TAC_TOE_Game_With_JAVAFX.git`
-2. Open the project in your preferred Java IDE.
-3. Build and run the project using JavaFX.
+2. Open the project in your preferred **Java IDE**.
+3. Build and run the project using **JavaFX**.
 
 
 ## Contributing
