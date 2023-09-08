@@ -1,4 +1,4 @@
-# Tic Tac Toe Game with JavaFX
+# Tic Tac Toe Game with JavaFX 🎯
 
 🎮🔥 This repository contains a Tic Tac Toe game developed using JavaFX, a powerful framework for building desktop applications with Java. 
 
