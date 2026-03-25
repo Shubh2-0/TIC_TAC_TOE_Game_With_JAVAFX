@@ -2,7 +2,7 @@ package org.openjfx.hellofx;
 
 
 import java.io.IOException;
-import java.util.ArrayList;import javax.swing.event.EventListenerList;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -49,7 +49,7 @@ public class App extends Application {
     		{0,3,6},
     		{1,4,7},
     		{2,5,8},
-    		{0,4,6},
+    		{0,4,8},
     		{2,4,6}
     		
     };
@@ -58,7 +58,6 @@ public class App extends Application {
     
     
       
-    private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -153,10 +152,11 @@ public class App extends Application {
 					btns.get(i).setGraphic(null);
 					gameOver = false;
 					resetButton.setDisable(true);
-					
+
 				}
-			
-				
+				activePlayer = 0;
+
+
 			}
 		});
     	
@@ -215,7 +215,7 @@ public class App extends Application {
     			 		
     			 			Alert alert = new Alert(AlertType.ERROR);
         			 		alert.setTitle("Error message");
-        			 		alert.setContentText("Placed is already accupied");
+        			 		alert.setContentText("Place is already occupied");
         			 		alert.show();
         			 		
     			 			
@@ -241,9 +241,10 @@ public class App extends Application {
 //							ACTIVE PLAYER HAS WINNER
 							
 						
-							Alert alert = new Alert(AlertType.ERROR);
-	    			 		alert.setTitle("Success message");
-	    			 		alert.setContentText(activePlayer+" has won the game");
+							String winner = (activePlayer == 1) ? "X" : "O";
+							Alert alert = new Alert(AlertType.INFORMATION);
+	    			 		alert.setTitle("Game Over");
+	    			 		alert.setContentText("Player " + winner + " has won the game!");
 	    			 		alert.show();
 	    			 		gameOver=true;
 	    			 		resetButton.setDisable(false);
@@ -259,13 +260,26 @@ public class App extends Application {
 						
 						
 					}
-					
-					
 
- 
-					
-					
-					
+					// Check for draw
+					if (!gameOver) {
+						boolean isDraw = true;
+						for (int state : gameState) {
+							if (state == 3) {
+								isDraw = false;
+								break;
+							}
+						}
+						if (isDraw) {
+							Alert alert = new Alert(AlertType.INFORMATION);
+							alert.setTitle("Game Over");
+							alert.setContentText("Game is a Draw!");
+							alert.show();
+							gameOver = true;
+							resetButton.setDisable(false);
+						}
+					}
+
 				}
 					
 					
